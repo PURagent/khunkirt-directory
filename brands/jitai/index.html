@@ -3,127 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JITAI VALVE — Product Catalog &amp; Company Profile</title>
+<title>JITAI VALVE — Product Catalog & Company Profile</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
 :root {
-  --primary:#D32F2F;--primary-dark:#B71C1C;--primary-light:#EF5350;
-  --dark:#1a1a2e;--darker:#0f0f1a;
-  --g900:#212121;--g800:#333;--g700:#555;--g400:#999;--g200:#e0e0e0;--g100:#f5f5f5;
-  --white:#fff;--gold:#FFB300;
+  --bg:#0a1628;--bg2:#0f1f3c;--bg3:#152a4a;
+  --surface:rgba(255,255,255,.04);--surface2:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.18);
+  --text:#fff;--text2:rgba(255,255,255,.6);--text3:rgba(255,255,255,.35);
+  --red:#D32F2F;--red-light:#EF5350;--red-dark:#B71C1C;
+  --navy:#1a2f4a;--navy-light:#243d5e;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Inter',-apple-system,sans-serif;background:var(--white);color:var(--g800);line-height:1.6;overflow-x:hidden;}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,46,.97);backdrop-filter:blur(20px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 2px 30px rgba(0,0,0,.4);}
-.nav-logo{font-size:26px;font-weight:900;color:#fff;letter-spacing:4px;}
-.nav-logo span{color:var(--primary);}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
-.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.5px;padding:6px 14px;border-radius:6px;transition:all .3s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(211,47,47,.3);}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,22,40,.97);backdrop-filter:blur(20px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;box-shadow:0 2px 30px rgba(0,0,0,.4);border-bottom:1px solid var(--border);}
+.nav-left{display:flex;align-items:center;gap:12px;}
+.back-btn{display:flex;align-items:center;gap:6px;text-decoration:none;color:var(--text2);font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid var(--border);transition:all .3s;white-space:nowrap;}
+.back-btn:hover{border-color:var(--red);color:#fff;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#fff;letter-spacing:3px;}
+.nav-logo span{color:var(--red);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.lang-toggle{display:flex;background:rgba(255,255,255,.06);border-radius:8px;padding:3px;gap:2px;border:1px solid var(--border);}
+.lang-btn{padding:5px 12px;border:none;border-radius:6px;background:transparent;color:var(--text3);font-size:11px;font-weight:600;cursor:pointer;transition:all .25s;font-family:inherit;letter-spacing:.3px;}
+.lang-btn:hover{color:var(--text2);background:rgba(255,255,255,.04);}
+.lang-btn.active{background:var(--red);color:#fff;box-shadow:0 2px 8px rgba(211,47,47,.35);}
 .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer;}
+.nav-links{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
+.nav-links a{color:var(--text3);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.5px;padding:5px 10px;border-radius:6px;transition:all .3s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:rgba(211,47,47,.3);}
 
 /* ── HERO ── */
 .hero{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35) contrast(1.1);}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,15,26,.8),rgba(26,26,46,.6),rgba(183,28,28,.3));}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.25) contrast(1.1) saturate(.8);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,22,40,.85),rgba(15,31,60,.7),rgba(183,28,28,.2));}
 .hero-content{position:relative;z-index:2;max-width:850px;padding:0 30px;}
-.hero-badge{display:inline-block;background:rgba(211,47,47,.2);border:1px solid rgba(211,47,47,.4);color:var(--primary-light);padding:8px 28px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:25px;}
-.hero h1{font-size:68px;font-weight:900;color:#fff;letter-spacing:10px;line-height:1.1;}
-.hero h1 span{color:var(--primary);}
-.hero-sub{font-size:18px;color:rgba(255,255,255,.6);font-weight:300;letter-spacing:3px;margin:10px 0 5px;}
-.hero-tagline{font-size:15px;color:rgba(255,255,255,.4);margin-bottom:35px;}
+.hero-badge{display:inline-block;background:rgba(211,47,47,.15);border:1px solid rgba(211,47,47,.3);color:var(--red-light);padding:8px 28px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:25px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:68px;font-weight:800;color:#fff;letter-spacing:6px;line-height:1.1;}
+.hero h1 span{color:var(--red);}
+.hero-sub{font-size:18px;color:var(--text2);font-weight:300;letter-spacing:3px;margin:10px 0 5px;}
+.hero-tagline{font-size:15px;color:var(--text3);margin-bottom:35px;}
 .hero-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
-.hero-stat .num{font-size:38px;font-weight:800;color:var(--primary);display:block;line-height:1;}
-.hero-stat .label{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:2px;margin-top:6px;}
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.3);font-size:11px;letter-spacing:3px;text-transform:uppercase;z-index:2;animation:bounce 2s infinite;}
+.hero-stat .num{font-size:38px;font-weight:800;color:var(--red);display:block;line-height:1;}
+.hero-stat .label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-top:6px;}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--text3);font-size:11px;letter-spacing:3px;text-transform:uppercase;z-index:2;animation:bounce 2s infinite;}
 @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
 
 /* ── SECTIONS ── */
 section{padding:80px 40px;}
 .section-header{text-align:center;margin-bottom:50px;}
-.section-tag{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--primary);margin-bottom:10px;}
-.section-title{font-size:36px;font-weight:800;color:var(--g900);margin-bottom:12px;}
-.section-desc{font-size:15px;color:var(--g700);max-width:650px;margin:0 auto;line-height:1.8;}
+.section-tag{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+.section-title{font-size:36px;font-weight:800;color:var(--text);margin-bottom:12px;}
+.section-desc{font-size:15px;color:var(--text2);max-width:650px;margin:0 auto;line-height:1.8;}
 
 /* ── CATALOG SECTIONS ── */
-.catalog-section{padding:60px 0;border-bottom:1px solid var(--g200);}
-.catalog-section:nth-child(even){background:var(--g100);}
+.catalog-section{padding:60px 0;border-bottom:1px solid var(--border);}
+.catalog-section:nth-child(even){background:var(--bg2);}
+.catalog-section:nth-child(odd){background:var(--bg);}
 .catalog-section-header{max-width:1400px;margin:0 auto 30px;padding:0 40px;display:flex;align-items:center;gap:20px;}
-.cat-number{font-size:48px;font-weight:900;color:var(--primary);opacity:.3;line-height:1;min-width:70px;}
-.cat-info h2{font-size:26px;font-weight:800;color:var(--g900);}
-.cat-info .cat-en{font-size:13px;color:var(--g400);font-weight:500;letter-spacing:1px;}
+.cat-number{font-size:48px;font-weight:900;color:var(--red);opacity:.4;line-height:1;min-width:70px;font-family:'Playfair Display',serif;}
+.cat-info h2{font-size:26px;font-weight:800;color:var(--text);}
+.cat-info .cat-en{font-size:13px;color:var(--text3);font-weight:500;letter-spacing:1px;}
 .cat-images{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;flex-direction:column;gap:20px;}
-.cat-img-wrap{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 4px 25px rgba(0,0,0,.1);cursor:pointer;transition:transform .3s,box-shadow .3s;background:#f0f0f0;}
-.cat-img-wrap:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.15);}
+.cat-img-wrap{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 4px 25px rgba(0,0,0,.3);cursor:pointer;transition:transform .3s,box-shadow .3s;background:var(--bg3);border:1px solid var(--border);}
+.cat-img-wrap:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(211,47,47,.15);border-color:rgba(211,47,47,.3);}
 .cat-img-wrap img{width:100%;height:auto;display:block;}
-.img-expand-btn{position:absolute;top:15px;right:15px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;backdrop-filter:blur(10px);transition:background .3s;display:flex;align-items:center;gap:6px;z-index:5;}
-.img-expand-btn:hover{background:var(--primary);}
+.img-expand-btn{position:absolute;top:15px;right:15px;background:rgba(10,22,40,.7);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;backdrop-filter:blur(10px);transition:background .3s;display:flex;align-items:center;gap:6px;z-index:5;border:1px solid var(--border);}
+.img-expand-btn:hover{background:var(--red);}
 .img-expand-btn svg{width:16px;height:16px;}
 
 /* ── LIGHTBOX ── */
-.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);justify-content:center;align-items:center;padding:20px;}
+.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(5,11,20,.97);justify-content:center;align-items:center;padding:20px;}
 .lightbox.active{display:flex;}
 .lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;border-radius:8px;box-shadow:0 0 60px rgba(0,0,0,.5);}
-.lightbox-close{position:fixed;top:20px;right:25px;background:rgba(255,255,255,.15);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;z-index:10000;display:flex;align-items:center;justify-content:center;transition:background .3s;}
-.lightbox-close:hover{background:var(--primary);}
-.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);color:#fff;border:none;width:50px;height:50px;border-radius:50%;font-size:24px;cursor:pointer;z-index:10000;transition:background .3s;display:flex;align-items:center;justify-content:center;}
-.lightbox-nav:hover{background:var(--primary);}
+.lightbox-close{position:fixed;top:20px;right:25px;background:rgba(255,255,255,.1);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer;z-index:10000;display:flex;align-items:center;justify-content:center;transition:background .3s;border:1px solid var(--border);}
+.lightbox-close:hover{background:var(--red);}
+.lightbox-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);color:#fff;border:none;width:50px;height:50px;border-radius:50%;font-size:24px;cursor:pointer;z-index:10000;transition:background .3s;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);}
+.lightbox-nav:hover{background:var(--red);}
 .lightbox-prev{left:20px;}
 .lightbox-next{right:20px;}
-.lightbox-counter{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:13px;font-weight:600;letter-spacing:2px;z-index:10000;}
+.lightbox-counter{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);color:var(--text2);font-size:13px;font-weight:600;letter-spacing:2px;z-index:10000;}
 
 /* ── PRODUCT INFO CARDS ── */
 .product-info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;max-width:1400px;margin:0 auto;padding:0 40px;}
-.p-info-card{background:var(--white);border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.05);transition:all .3s;}
-.p-info-card:hover{border-color:var(--primary);box-shadow:0 8px 30px rgba(211,47,47,.1);}
-.p-info-card h4{font-size:15px;font-weight:700;color:var(--g900);margin-bottom:8px;}
-.p-info-card p{font-size:13px;color:var(--g700);line-height:1.7;}
+.p-info-card{background:var(--surface2);border-radius:12px;padding:25px;box-shadow:0 2px 15px rgba(0,0,0,.2);border:1px solid var(--border);transition:all .3s;}
+.p-info-card:hover{border-color:rgba(211,47,47,.4);box-shadow:0 8px 30px rgba(211,47,47,.1);}
+.p-info-card h4{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.p-info-card p{font-size:13px;color:var(--text2);line-height:1.7;}
 .spec-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
-.spec-tag{background:var(--g100);padding:4px 10px;border-radius:5px;font-size:10px;font-weight:600;color:var(--g700);}
-
-/* ── CERTIFICATIONS ── */
-.cert-section{background:var(--darker);color:#fff;padding:80px 40px;}
-.cert-section .section-title{color:#fff;}
-.cert-section .section-desc{color:rgba(255,255,255,.5);}
-.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;max-width:1200px;margin:0 auto;}
-.cert-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:25px;text-align:center;transition:all .3s;}
-.cert-card:hover{background:rgba(255,255,255,.1);border-color:var(--primary);}
-.cert-card .ci{font-size:32px;margin-bottom:10px;}
-.cert-card h4{font-size:14px;font-weight:700;margin-bottom:5px;}
-.cert-card p{font-size:12px;color:rgba(255,255,255,.4);}
-
-/* ── CLIENTS ── */
-.clients-section{background:var(--g100);padding:80px 40px;}
-.client-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px;max-width:1200px;margin:0 auto;}
-.cl-card{background:var(--white);border-radius:8px;padding:20px 10px;text-align:center;font-size:13px;font-weight:600;color:var(--g700);border:1px solid transparent;transition:all .3s;}
-.cl-card:hover{border-color:var(--primary);box-shadow:0 4px 15px rgba(0,0,0,.08);}
-.cl-card .cl-i{font-size:24px;margin-bottom:5px;display:block;}
+.spec-tag{background:rgba(211,47,47,.1);padding:4px 10px;border-radius:5px;font-size:10px;font-weight:600;color:var(--red-light);border:1px solid rgba(211,47,47,.2);}
 
 /* ── CONTACT ── */
-.contact{background:linear-gradient(135deg,var(--dark),var(--darker));color:#fff;text-align:center;padding:70px 40px;}
-.contact h2{font-size:32px;font-weight:800;margin-bottom:10px;}
-.contact>p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:35px;}
+.contact{background:linear-gradient(135deg,var(--bg2),var(--bg));color:#fff;text-align:center;padding:70px 40px;border-top:1px solid var(--border);}
+.contact h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;margin-bottom:10px;}
+.contact>p{font-size:15px;color:var(--text2);margin-bottom:35px;}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto;}
-.c-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:25px;}
-.c-item h4{font-size:13px;font-weight:600;color:var(--primary-light);margin-bottom:6px;}
-.c-item p{font-size:13px;color:rgba(255,255,255,.6);}
+.c-item{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:25px;transition:border-color .3s;}
+.c-item:hover{border-color:rgba(211,47,47,.3);}
+.c-item h4{font-size:13px;font-weight:600;color:var(--red-light);margin-bottom:6px;}
+.c-item p{font-size:13px;color:var(--text2);}
 
-footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;padding:25px;font-size:12px;border-top:1px solid rgba(255,255,255,.05);}
+footer{background:var(--bg);color:var(--text3);text-align:center;padding:25px;font-size:12px;border-top:1px solid var(--border);}
 
-/* ── STICKY SIDEBAR NAV ── */
+/* ── STEAM TRAP SPECIAL ── */
+.st-section{border-top:3px solid var(--red)!important;background:linear-gradient(135deg,var(--bg3),var(--bg2))!important;}
+.st-number{color:var(--red-light)!important;}
+
+/* ── PRODUCT DIVIDER ── */
+.product-divider{border-top:3px solid var(--red);padding-top:20px;}
+
+/* ── SIDE NAV ── */
 .side-nav{position:fixed;right:15px;top:50%;transform:translateY(-50%);z-index:900;display:flex;flex-direction:column;gap:4px;}
-.side-nav a{display:block;width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.15);transition:all .3s;border:2px solid transparent;}
-.side-nav a:hover,.side-nav a.active{background:var(--primary);transform:scale(1.4);border-color:var(--primary);}
+.side-nav a{display:block;width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.1);transition:all .3s;border:2px solid transparent;}
+.side-nav a:hover,.side-nav a.active{background:var(--red);transform:scale(1.4);border-color:var(--red);}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:0 15px;}
-  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--darker);flex-direction:column;padding:15px;gap:5px;}
+@media(max-width:1100px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);flex-direction:column;padding:15px;gap:5px;border-bottom:1px solid var(--border);}
   .nav-links.open{display:flex;}
   .nav-toggle{display:block;}
+}
+@media(max-width:900px){
+  nav{padding:0 15px;}
   .hero h1{font-size:38px;letter-spacing:4px;}
   .hero-stats{gap:20px;}
   .hero-stat .num{font-size:28px;}
@@ -132,32 +135,42 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
   .cat-number{font-size:32px;min-width:45px;}
   .cat-info h2{font-size:20px;}
   .side-nav{display:none;}
+  .lang-toggle{display:none;}
+  .nav-right .lang-toggle-mobile{display:flex!important;}
 }
+.lang-toggle-mobile{display:none!important;position:absolute;top:64px;right:15px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:5px;gap:2px;z-index:1001;}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="../../index.html" style="text-decoration:none;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid rgba(255,255,255,.1);transition:all .3s;white-space:nowrap;" onmouseover="this.style.borderColor='#D32F2F';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.6)'">&larr; Directory</a>
-  <div class="nav-logo">JI<span>TAI</span></div>
+  <div class="nav-left">
+    <a href="../../index.html" class="back-btn">&larr; <span data-en="Directory" data-th="หน้าหลัก" data-zh="目录">Directory</span></a>
+    <div class="nav-logo">JI<span>TAI</span></div>
+  </div>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
   <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#sec-company">Company</a>
-    <a href="#sec-process">Process</a>
-    <a href="#sec-quality">Quality</a>
-    <a href="#sec-certs">Certifications</a>
-    <a href="#sec-control">Control Valves</a>
-    <a href="#sec-api-hp">API HP</a>
-    <a href="#sec-regulating">Regulating</a>
-    <a href="#sec-cryo">Cryogenic</a>
-    <a href="#sec-gb">GB Valves</a>
-    <a href="#sec-api">API Valves</a>
-    <a href="#sec-threaded">Threaded</a>
-    <a href="#sec-forged">Forged</a>
-    <a href="#sec-st-cover">Steam Traps</a>
-    <a href="#contact">Contact</a>
+    <a href="#about" data-en="About" data-th="เกี่ยวกับ" data-zh="关于">About</a>
+    <a href="#sec-company" data-en="Company" data-th="บริษัท" data-zh="公司">Company</a>
+    <a href="#sec-process" data-en="Process" data-th="กระบวนการ" data-zh="工艺">Process</a>
+    <a href="#sec-quality" data-en="Quality" data-th="คุณภาพ" data-zh="质量">Quality</a>
+    <a href="#sec-certs" data-en="Certs" data-th="ใบรับรอง" data-zh="资质">Certs</a>
+    <a href="#sec-control" data-en="Control" data-th="ควบคุม" data-zh="控制阀">Control</a>
+    <a href="#sec-api-hp" data-en="API HP" data-th="API HP" data-zh="高压阀">API HP</a>
+    <a href="#sec-cryo" data-en="Cryo" data-th="อุณหภูมิต่ำ" data-zh="低温阀">Cryo</a>
+    <a href="#sec-gb" data-en="GB" data-th="GB" data-zh="国标阀">GB</a>
+    <a href="#sec-api" data-en="API" data-th="API" data-zh="美标阀">API</a>
+    <a href="#sec-forged" data-en="Forged" data-th="เหล็กตีขึ้นรูป" data-zh="锻钢阀">Forged</a>
+    <a href="#sec-st-cover" data-en="Steam Traps" data-th="กับดักไอน้ำ" data-zh="疏水阀">Steam Traps</a>
+    <a href="#contact" data-en="Contact" data-th="ติดต่อ" data-zh="联系">Contact</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn" onclick="setLang('th')">ไทย</button>
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('zh')">中文</button>
+    </div>
   </div>
 </nav>
 
@@ -166,18 +179,18 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
   <img class="hero-bg" src="catalog_images/page_01.jpg" alt="JITAI Cover">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">Since 1988 &mdash; Professional Valve Manufacturer</div>
+    <div class="hero-badge" data-en="Since 1988 — Professional Valve Manufacturer" data-th="ตั้งแต่ 1988 — ผู้ผลิตวาล์วมืออาชีพ" data-zh="始于1988 — 专业阀门制造商">Since 1988 — Professional Valve Manufacturer</div>
     <h1>JI<span>TAI</span> VALVE</h1>
     <div class="hero-sub">吉泰阀门（苏州）有限公司</div>
-    <div class="hero-tagline">JITAI Valve (Suzhou) Co., Ltd. &mdash; Science Technology Serves the World</div>
+    <div class="hero-tagline" data-en="JITAI Valve (Suzhou) Co., Ltd. — Science Technology Serves the World" data-th="JITAI Valve (Suzhou) Co., Ltd. — วิทยาศาสตร์และเทคโนโลยีรับใช้โลก" data-zh="吉泰阀门（苏州）有限公司 — 科技服务世界">JITAI Valve (Suzhou) Co., Ltd. — Science Technology Serves the World</div>
     <div class="hero-stats">
-      <div class="hero-stat"><span class="num">38+</span><span class="label">Years</span></div>
-      <div class="hero-stat"><span class="num">10,000+</span><span class="label">Tons/Year</span></div>
-      <div class="hero-stat"><span class="num">200+</span><span class="label">CNC Machines</span></div>
-      <div class="hero-stat"><span class="num">108M</span><span class="label">RMB Capital</span></div>
+      <div class="hero-stat"><span class="num">38+</span><span class="label" data-en="Years" data-th="ปี" data-zh="年">Years</span></div>
+      <div class="hero-stat"><span class="num">10,000+</span><span class="label" data-en="Tons/Year" data-th="ตัน/ปี" data-zh="吨/年">Tons/Year</span></div>
+      <div class="hero-stat"><span class="num">200+</span><span class="label" data-en="CNC Machines" data-th="เครื่อง CNC" data-zh="数控机床">CNC Machines</span></div>
+      <div class="hero-stat"><span class="num">108M</span><span class="label" data-en="RMB Capital" data-th="ทุนจดทะเบียน RMB" data-zh="注册资金">RMB Capital</span></div>
     </div>
   </div>
-  <div class="scroll-hint">&#x25BC; Scroll to Explore Catalog</div>
+  <div class="scroll-hint" data-en="&#x25BC; Scroll to Explore Catalog" data-th="&#x25BC; เลื่อนลงเพื่อดูแคตตาล็อก" data-zh="&#x25BC; 向下滚动浏览目录">&#x25BC; Scroll to Explore Catalog</div>
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
@@ -185,25 +198,25 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-company">
-  <div class="catalog-section-header"><div class="cat-number">01</div><div class="cat-info"><h2>Company Profile — 企业简介</h2><div class="cat-en">About JITAI Valve Group</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">01</div><div class="cat-info"><h2 data-en="Company Profile — 企业简介" data-th="โปรไฟล์บริษัท — 企业简介" data-zh="企业简介">Company Profile — 企业简介</h2><div class="cat-en" data-en="About JITAI Valve Group" data-th="เกี่ยวกับ JITAI Valve Group" data-zh="关于吉泰阀门集团">About JITAI Valve Group</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(0)">
       <img src="catalog_images/page_03.jpg" alt="Company Profile" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="about">
-  <div class="catalog-section-header"><div class="cat-number">03</div><div class="cat-info"><h2>Group Structure — 集团架构</h2><div class="cat-en">Corporate Structure &amp; Casting Process</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">03</div><div class="cat-info"><h2 data-en="Group Structure — 集团架构" data-th="โครงสร้างกลุ่มบริษัท — 集团架构" data-zh="集团架构">Group Structure — 集团架构</h2><div class="cat-en" data-en="Corporate Structure & Casting Process" data-th="โครงสร้างองค์กรและกระบวนการหล่อ" data-zh="公司架构与铸造工艺">Corporate Structure & Casting Process</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(1)">
       <img src="catalog_images/page_04.jpg" alt="Group Structure" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(2)">
       <img src="catalog_images/page_05.jpg" alt="Casting Process" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -213,19 +226,19 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-process">
-  <div class="catalog-section-header"><div class="cat-number">07</div><div class="cat-info"><h2>Technology &amp; Process — 科技创新 / 工艺流程</h2><div class="cat-en">Innovation, Process Flow &amp; Production Equipment</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">07</div><div class="cat-info"><h2 data-en="Technology & Process — 科技创新 / 工艺流程" data-th="เทคโนโลยีและกระบวนการ — 科技创新 / 工艺流程" data-zh="科技创新 / 工艺流程">Technology & Process — 科技创新 / 工艺流程</h2><div class="cat-en" data-en="Innovation, Process Flow & Production Equipment" data-th="นวัตกรรม, การไหลของกระบวนการ และอุปกรณ์การผลิต" data-zh="创新、工艺流程与生产设备">Innovation, Process Flow & Production Equipment</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(3)">
       <img src="catalog_images/page_06.jpg" alt="Technological Innovation" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(4)">
       <img src="catalog_images/page_07.jpg" alt="Process Flow" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(5)">
       <img src="catalog_images/page_08.jpg" alt="Production Equipment" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -235,19 +248,19 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-quality">
-  <div class="catalog-section-header"><div class="cat-number">13</div><div class="cat-info"><h2>Quality Control — 品质现场 / 材料检测 / 过程检测</h2><div class="cat-en">Quality Scene, Material &amp; Process Detection</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">13</div><div class="cat-info"><h2 data-en="Quality Control — 品质现场 / 材料检测 / 过程检测" data-th="การควบคุมคุณภาพ — 品质现场 / 材料检测 / 过程检测" data-zh="品质现场 / 材料检测 / 过程检测">Quality Control — 品质现场 / 材料检测 / 过程检测</h2><div class="cat-en" data-en="Quality Scene, Material & Process Detection" data-th="การตรวจสอบคุณภาพ วัสดุ และกระบวนการ" data-zh="质量现场、材料与过程检测">Quality Scene, Material & Process Detection</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(6)">
       <img src="catalog_images/page_09.jpg" alt="Quality Scene" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(7)">
       <img src="catalog_images/page_10.jpg" alt="Material Detection" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(8)">
       <img src="catalog_images/page_11.jpg" alt="Process Detection" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -257,15 +270,15 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-certs">
-  <div class="catalog-section-header"><div class="cat-number">19</div><div class="cat-info"><h2>Certifications &amp; Clients — 集团资质 / 尊贵客户 / 工程现场</h2><div class="cat-en">Group Qualification, Valued Customers &amp; Engineering Scene</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">19</div><div class="cat-info"><h2 data-en="Certifications & Clients — 集团资质 / 尊贵客户" data-th="ใบรับรองและลูกค้า — 集团资质 / 尊贵客户" data-zh="集团资质 / 尊贵客户 / 工程现场">Certifications & Clients — 集团资质 / 尊贵客户</h2><div class="cat-en" data-en="Group Qualification, Valued Customers & Engineering" data-th="คุณสมบัติกลุ่ม, ลูกค้าที่มีคุณค่า และวิศวกรรม" data-zh="集团资质、尊贵客户与工程现场">Group Qualification, Valued Customers & Engineering</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(9)">
       <img src="catalog_images/page_12.jpg" alt="Group Qualification 1" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(10)">
-      <img src="catalog_images/page_13.jpg" alt="Valued Customers &amp; Engineering Scene" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_13.jpg" alt="Valued Customers" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -274,16 +287,16 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- PART 5: CONTROL VALVES -->
 <!-- ═══════════════════════════════════════════ -->
 
-<div class="catalog-section" id="sec-control" style="border-top:4px solid var(--primary);">
-  <div class="catalog-section-header"><div class="cat-number">23</div><div class="cat-info"><h2>Control Valve Series — 控制阀系列</h2><div class="cat-en">Pneumatic &amp; Electric Ball, Gate, Globe, Butterfly Valves</div></div></div>
+<div class="catalog-section product-divider" id="sec-control">
+  <div class="catalog-section-header"><div class="cat-number">23</div><div class="cat-info"><h2 data-en="Control Valve Series — 控制阀系列" data-th="วาล์วควบคุมซีรีส์ — 控制阀系列" data-zh="控制阀系列">Control Valve Series — 控制阀系列</h2><div class="cat-en" data-en="Pneumatic & Electric Ball, Gate, Globe, Butterfly Valves" data-th="วาล์วลม และไฟฟ้า: บอล, เกท, โกลบ, บัตเตอร์ฟลาย" data-zh="气动/电动球阀、闸阀、截止阀、蝶阀">Pneumatic & Electric Ball, Gate, Globe, Butterfly Valves</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(11)">
       <img src="catalog_images/page_14.jpg" alt="Control Valve 1" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(12)">
       <img src="catalog_images/page_15.jpg" alt="Control Valve 2" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -293,25 +306,22 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-api-hp">
-  <div class="catalog-section-header"><div class="cat-number">27</div><div class="cat-info"><h2>API High Pressure Valves — 美标高压阀门系列</h2><div class="cat-en">Gate, Globe, Check Valves up to CLASS3500</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">27</div><div class="cat-info"><h2 data-en="API High Pressure Valves — 美标高压阀门系列" data-th="วาล์วแรงดันสูง API — 美标高压阀门系列" data-zh="美标高压阀门系列">API High Pressure Valves — 美标高压阀门系列</h2><div class="cat-en" data-en="Gate, Globe, Check Valves up to CLASS3500" data-th="เกท, โกลบ, เช็ควาล์ว ถึง CLASS3500" data-zh="闸阀、截止阀、止回阀 至 CLASS3500">Gate, Globe, Check Valves up to CLASS3500</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(13)">
-      <img src="catalog_images/page_16.jpg" alt="API High Pressure &amp; Regulating Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_16.jpg" alt="API High Pressure & Regulating Valves" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-regulating">
-  <div class="catalog-section-header"><div class="cat-number">28</div><div class="cat-info"><h2>Regulating Valve Series — 调节阀系列</h2><div class="cat-en">Single-Seat, Sleeve, Three-Way, Self-Operated Control Valves</div></div></div>
-  <div class="cat-images" style="margin-bottom:15px;">
-    <!-- Regulating valves are on the right half of page 16, shown above -->
-  </div>
+  <div class="catalog-section-header"><div class="cat-number">28</div><div class="cat-info"><h2 data-en="Regulating Valve Series — 调节阀系列" data-th="วาล์วปรับแต่งซีรีส์ — 调节阀系列" data-zh="调节阀系列">Regulating Valve Series — 调节阀系列</h2><div class="cat-en" data-en="Single-Seat, Sleeve, Three-Way, Self-Operated Control Valves" data-th="วาล์วควบคุมแบบที่นั่งเดียว, สลีฟ, สามทาง" data-zh="单座、套筒、三通、自力式控制阀">Single-Seat, Sleeve, Three-Way, Self-Operated Control Valves</div></div></div>
   <div class="product-info-grid">
-    <div class="p-info-card"><h4>Electric Single-Seated / Cage-Guided</h4><p>DN20-200, PN16-100</p><div class="spec-tags"><span class="spec-tag">Precise Control</span><span class="spec-tag">Modular</span></div></div>
-    <div class="p-info-card"><h4>Pneumatic Diaphragm Single-Seated</h4><p>DN20-200, PN16-100</p><div class="spec-tags"><span class="spec-tag">Low Friction</span><span class="spec-tag">Fast Response</span></div></div>
-    <div class="p-info-card"><h4>Self-Operated Pressure Regulator</h4><p>DN20-300, PN16-63</p><div class="spec-tags"><span class="spec-tag">No External Power</span><span class="spec-tag">Auto Adjust</span></div></div>
-    <div class="p-info-card"><h4>Diaphragm Three-Way Control Valve</h4><p>DN25-200, PN16-40</p><div class="spec-tags"><span class="spec-tag">Mixing</span><span class="spec-tag">Diverting</span></div></div>
+    <div class="p-info-card"><h4 data-en="Electric Single-Seated / Cage-Guided" data-th="ไฟฟ้าที่นั่งเดียว / Cage-Guided" data-zh="电动单座/笼式导向">Electric Single-Seated / Cage-Guided</h4><p>DN20-200, PN16-100</p><div class="spec-tags"><span class="spec-tag" data-en="Precise Control" data-th="ควบคุมแม่นยำ" data-zh="精确控制">Precise Control</span><span class="spec-tag" data-en="Modular" data-th="แบบโมดูลาร์" data-zh="模块化">Modular</span></div></div>
+    <div class="p-info-card"><h4 data-en="Pneumatic Diaphragm Single-Seated" data-th="ลมไดอะแฟรมที่นั่งเดียว" data-zh="气动薄膜单座">Pneumatic Diaphragm Single-Seated</h4><p>DN20-200, PN16-100</p><div class="spec-tags"><span class="spec-tag" data-en="Low Friction" data-th="แรงเสียดทานต่ำ" data-zh="低摩擦">Low Friction</span><span class="spec-tag" data-en="Fast Response" data-th="ตอบสนองเร็ว" data-zh="快速响应">Fast Response</span></div></div>
+    <div class="p-info-card"><h4 data-en="Self-Operated Pressure Regulator" data-th="ตัวควบคุมแรงดันอัตโนมัติ" data-zh="自力式压力调节阀">Self-Operated Pressure Regulator</h4><p>DN20-300, PN16-63</p><div class="spec-tags"><span class="spec-tag" data-en="No External Power" data-th="ไม่ต้องใช้พลังงานภายนอก" data-zh="无需外部电源">No External Power</span><span class="spec-tag" data-en="Auto Adjust" data-th="ปรับอัตโนมัติ" data-zh="自动调节">Auto Adjust</span></div></div>
+    <div class="p-info-card"><h4 data-en="Diaphragm Three-Way Control Valve" data-th="วาล์วควบคุมสามทางไดอะแฟรม" data-zh="薄膜三通控制阀">Diaphragm Three-Way Control Valve</h4><p>DN25-200, PN16-40</p><div class="spec-tags"><span class="spec-tag" data-en="Mixing" data-th="ผสม" data-zh="混合">Mixing</span><span class="spec-tag" data-en="Diverting" data-th="แยกทาง" data-zh="分流">Diverting</span></div></div>
   </div>
 </div>
 
@@ -320,11 +330,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-cryo">
-  <div class="catalog-section-header"><div class="cat-number">29</div><div class="cat-info"><h2>Cryogenic Valve Series — 低温阀门系列</h2><div class="cat-en">Ball, Gate, Globe &amp; Check Valves for -196°C Applications</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">29</div><div class="cat-info"><h2 data-en="Cryogenic Valve Series — 低温阀门系列" data-th="วาล์วอุณหภูมิต่ำ — 低温阀门系列" data-zh="低温阀门系列">Cryogenic Valve Series — 低温阀门系列</h2><div class="cat-en" data-en="Ball, Gate, Globe & Check Valves for -196°C" data-th="บอล, เกท, โกลบ และเช็ควาล์ว สำหรับ -196°C" data-zh="球阀、闸阀、截止阀、止回阀 适用于-196°C">Ball, Gate, Globe & Check Valves for -196°C</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(14)">
       <img src="catalog_images/page_17.jpg" alt="Cryogenic Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -334,23 +344,23 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-gb">
-  <div class="catalog-section-header"><div class="cat-number">31</div><div class="cat-info"><h2>GB Valve Series — 国标阀门系列</h2><div class="cat-en">Ball, Gate, Globe, Check &amp; Butterfly Valves (GB/DIN/JIS/ASME Standard)</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">31</div><div class="cat-info"><h2 data-en="GB Valve Series — 国标阀门系列" data-th="วาล์วมาตรฐาน GB — 国标阀门系列" data-zh="国标阀门系列">GB Valve Series — 国标阀门系列</h2><div class="cat-en" data-en="Ball, Gate, Globe, Check & Butterfly (GB/DIN/JIS/ASME)" data-th="บอล, เกท, โกลบ, เช็ค และบัตเตอร์ฟลาย (GB/DIN/JIS/ASME)" data-zh="球阀、闸阀、截止阀、止回阀、蝶阀 (GB/DIN/JIS/ASME)">Ball, Gate, Globe, Check & Butterfly (GB/DIN/JIS/ASME)</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(15)">
-      <img src="catalog_images/page_18.jpg" alt="GB Valves — Ball Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_18.jpg" alt="GB Ball Valves" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(16)">
-      <img src="catalog_images/page_19.jpg" alt="GB Valves — Gate Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_19.jpg" alt="GB Gate Valves" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(17)">
-      <img src="catalog_images/page_20.jpg" alt="GB Valves — Globe &amp; Check Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_20.jpg" alt="GB Globe & Check" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(18)">
-      <img src="catalog_images/page_21.jpg" alt="GB Valves — Butterfly &amp; Special" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="catalog_images/page_21.jpg" alt="GB Butterfly & Special" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -360,11 +370,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-api">
-  <div class="catalog-section-header"><div class="cat-number">39</div><div class="cat-info"><h2>API Valve Series — 美标阀门系列</h2><div class="cat-en">API Standard Gate, Globe, Check &amp; Ball Valves</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">39</div><div class="cat-info"><h2 data-en="API Valve Series — 美标阀门系列" data-th="วาล์ว API ซีรีส์ — 美标阀门系列" data-zh="美标阀门系列">API Valve Series — 美标阀门系列</h2><div class="cat-en" data-en="API Standard Gate, Globe, Check & Ball Valves" data-th="วาล์วมาตรฐาน API: เกท, โกลบ, เช็ค และบอล" data-zh="美标闸阀、截止阀、止回阀、球阀">API Standard Gate, Globe, Check & Ball Valves</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(19)">
       <img src="catalog_images/page_22.jpg" alt="API Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -374,11 +384,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-threaded">
-  <div class="catalog-section-header"><div class="cat-number">41</div><div class="cat-info"><h2>Threaded Valve Series — 丝扣阀门系列</h2><div class="cat-en">Compact Threaded &amp; Socket-Weld Valves</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">41</div><div class="cat-info"><h2 data-en="Threaded Valve Series — 丝扣阀门系列" data-th="วาล์วเกลียวซีรีส์ — 丝扣阀门系列" data-zh="丝扣阀门系列">Threaded Valve Series — 丝扣阀门系列</h2><div class="cat-en" data-en="Compact Threaded & Socket-Weld Valves" data-th="วาล์วเกลียวและ Socket-Weld แบบกะทัดรัด" data-zh="紧凑型螺纹和承插焊阀门">Compact Threaded & Socket-Weld Valves</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(20)">
       <img src="catalog_images/page_23.jpg" alt="Threaded Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -388,11 +398,11 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <div class="catalog-section" id="sec-forged">
-  <div class="catalog-section-header"><div class="cat-number">43</div><div class="cat-info"><h2>Forged Steel Valve Series — 锻钢阀门系列</h2><div class="cat-en">High-Integrity Forged Steel Valves</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number">43</div><div class="cat-info"><h2 data-en="Forged Steel Valve Series — 锻钢阀门系列" data-th="วาล์วเหล็กตีขึ้นรูป — 锻钢阀门系列" data-zh="锻钢阀门系列">Forged Steel Valve Series — 锻钢阀门系列</h2><div class="cat-en" data-en="High-Integrity Forged Steel Valves" data-th="วาล์วเหล็กตีขึ้นรูปคุณภาพสูง" data-zh="高强度锻钢阀门">High-Integrity Forged Steel Valves</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(21)">
       <img src="catalog_images/page_24.jpg" alt="Forged Steel Valves" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -401,122 +411,122 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- STEAM TRAP CATALOG -->
 <!-- ═══════════════════════════════════════════ -->
 
-<div class="catalog-section" id="sec-st-cover" style="border-top:4px solid #1565C0;background:linear-gradient(135deg,#e3f2fd,#fff);">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">ST</div><div class="cat-info"><h2>Steam Trap &amp; Air Release Valve Catalog — 疏水阀系列</h2><div class="cat-en">Specialized Production: Steam Traps &amp; Air Release Valves</div></div></div>
+<div class="catalog-section st-section" id="sec-st-cover">
+  <div class="catalog-section-header"><div class="cat-number st-number">ST</div><div class="cat-info"><h2 data-en="Steam Trap & Air Release Valve Catalog — 疏水阀系列" data-th="แคตตาล็อกกับดักไอน้ำ — 疏水阀系列" data-zh="疏水阀系列目录">Steam Trap & Air Release Valve Catalog — 疏水阀系列</h2><div class="cat-en" data-en="Specialized Production: Steam Traps & Air Release Valves" data-th="การผลิตเฉพาะทาง: กับดักไอน้ำและวาล์วระบายอากาศ" data-zh="专业生产：疏水阀与排气阀">Specialized Production: Steam Traps & Air Release Valves</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(22)">
       <img src="steam_trap_images_hd/st_page_01.jpg" alt="Steam Trap Cover" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(23)">
-      <img src="steam_trap_images_hd/st_page_02.jpg" alt="Company Profile &amp; Contents" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_02.jpg" alt="Company Profile & Contents" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(24)">
       <img src="steam_trap_images_hd/st_page_03.jpg" alt="Advanced Machining Equipment" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-lever-float">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">01</div><div class="cat-info"><h2>Lever Float Type Steam Trap</h2><div class="cat-en">FT14 Thread / FT44 Flange — DN15-DN25, Displacement &lt;2100kg/h</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">01</div><div class="cat-info"><h2 data-en="Lever Float Type Steam Trap" data-th="กับดักไอน้ำแบบคันโยกลูกลอย" data-zh="杠杆浮球式疏水阀">Lever Float Type Steam Trap</h2><div class="cat-en" data-en="FT14 Thread / FT44 Flange — DN15-DN25" data-th="FT14 เกลียว / FT44 หน้าแปลน — DN15-DN25" data-zh="FT14螺纹 / FT44法兰 — DN15-DN25">FT14 Thread / FT44 Flange — DN15-DN25</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(25)">
-      <img src="steam_trap_images_hd/st_page_04.jpg" alt="Lever Float Type Steam Trap" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_04.jpg" alt="Lever Float Type" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(26)">
-      <img src="steam_trap_images_hd/st_page_05.jpg" alt="FT14 Specifications &amp; Dimensions" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_05.jpg" alt="FT14 Specifications" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-lever-single">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">05</div><div class="cat-info"><h2>Lever Single-seat Float Type Steam Trap</h2><div class="cat-en">FT13 Thread / FT43 Flange / FT443 Flange — DN15-DN65, &lt;5000kg/h</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">05</div><div class="cat-info"><h2 data-en="Lever Single-seat Float Type Steam Trap" data-th="กับดักไอน้ำแบบคันโยกลูกลอยที่นั่งเดียว" data-zh="杠杆单座浮球式疏水阀">Lever Single-seat Float Type Steam Trap</h2><div class="cat-en" data-en="FT13/FT43/FT443 — DN15-DN65, <5000kg/h" data-th="FT13/FT43/FT443 — DN15-DN65, <5000kg/h" data-zh="FT13/FT43/FT443 — DN15-DN65, <5000kg/h">FT13/FT43/FT443 — DN15-DN65, &lt;5000kg/h</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(27)">
-      <img src="steam_trap_images_hd/st_page_06.jpg" alt="Lever Single-seat Float Type" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_06.jpg" alt="Lever Single-seat" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(28)">
       <img src="steam_trap_images_hd/st_page_07.jpg" alt="FT13/FT43 Specifications" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(29)">
-      <img src="steam_trap_images_hd/st_page_08.jpg" alt="FT43/FT443 Displacement Charts" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_08.jpg" alt="FT43/FT443 Charts" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-lever-double">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">09</div><div class="cat-info"><h2>Lever Double-seat Float Ball Steam Trap</h2><div class="cat-en">FT43 Flange / FT13 Thread / FT443 Flange — DN32-DN80, 5000-20000kg/h</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">09</div><div class="cat-info"><h2 data-en="Lever Double-seat Float Ball Steam Trap" data-th="กับดักไอน้ำแบบลูกลอยสองที่นั่ง" data-zh="杠杆双座浮球式疏水阀">Lever Double-seat Float Ball Steam Trap</h2><div class="cat-en" data-en="DN32-DN80, 5000-20000kg/h" data-th="DN32-DN80, 5000-20000kg/h" data-zh="DN32-DN80, 5000-20000kg/h">DN32-DN80, 5000-20000kg/h</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(30)">
-      <img src="steam_trap_images_hd/st_page_09.jpg" alt="Lever Double-seat Float Ball" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_09.jpg" alt="Double-seat Float Ball" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(31)">
-      <img src="steam_trap_images_hd/st_page_10.jpg" alt="Double-seat Specifications" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_10.jpg" alt="Double-seat Specs" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(32)">
-      <img src="steam_trap_images_hd/st_page_11.jpg" alt="Double-seat Displacement Charts" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_11.jpg" alt="Double-seat Charts" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(33)">
-      <img src="steam_trap_images_hd/st_page_12.jpg" alt="Double-seat High Displacement" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_12.jpg" alt="High Displacement" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-inverted">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">13</div><div class="cat-info"><h2>Inverted Bucket Steam Trap</h2><div class="cat-en">Threads &amp; Flanges — Most Powerful Mechanical Type, Resistant to Hydraulic Shock</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">13</div><div class="cat-info"><h2 data-en="Inverted Bucket Steam Trap" data-th="กับดักไอน้ำแบบถังคว่ำ" data-zh="倒置桶式疏水阀">Inverted Bucket Steam Trap</h2><div class="cat-en" data-en="Most Powerful Mechanical Type, Resistant to Hydraulic Shock" data-th="แบบกลไกที่ทรงพลังที่สุด ทนต่อแรงกระแทกไฮดรอลิก" data-zh="最强大的机械式，耐水锤冲击">Most Powerful Mechanical Type, Resistant to Hydraulic Shock</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(34)">
-      <img src="steam_trap_images_hd/st_page_13.jpg" alt="Inverted Bucket Steam Trap" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_13.jpg" alt="Inverted Bucket" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(35)">
-      <img src="steam_trap_images_hd/st_page_14.jpg" alt="Inverted Bucket Specifications" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_14.jpg" alt="Inverted Bucket Specs" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
     <div class="cat-img-wrap" onclick="openLightbox(36)">
       <img src="steam_trap_images_hd/st_page_15.jpg" alt="Inverted Bucket Displacement" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-free-float">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">19</div><div class="cat-info"><h2>Free Float Ball Type Steam Trap</h2><div class="cat-en">Compact Design for Efficient Condensate Drainage</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">19</div><div class="cat-info"><h2 data-en="Free Float Ball Type Steam Trap" data-th="กับดักไอน้ำแบบลูกลอยอิสระ" data-zh="自由浮球式疏水阀">Free Float Ball Type Steam Trap</h2><div class="cat-en" data-en="Compact Design for Efficient Condensate Drainage" data-th="ดีไซน์กะทัดรัดสำหรับการระบายคอนเดนเสทอย่างมีประสิทธิภาพ" data-zh="紧凑设计，高效排除凝结水">Compact Design for Efficient Condensate Drainage</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(37)">
-      <img src="steam_trap_images_hd/st_page_16.jpg" alt="Free Float Ball Type" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <img src="steam_trap_images_hd/st_page_16.jpg" alt="Free Float Ball" loading="lazy">
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-thermo">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">21</div><div class="cat-info"><h2>Thermodynamic &amp; High-Pressure Steam Traps</h2><div class="cat-en">Thermodynamic, High-Pressure Thermodynamic &amp; Bimetallic Strip Types</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">21</div><div class="cat-info"><h2 data-en="Thermodynamic & High-Pressure Steam Traps" data-th="กับดักไอน้ำเทอร์โมไดนามิกและแรงดันสูง" data-zh="热动力型和高压疏水阀">Thermodynamic & High-Pressure Steam Traps</h2><div class="cat-en" data-en="Thermodynamic, High-Pressure & Bimetallic Strip Types" data-th="แบบเทอร์โมไดนามิก, แรงดันสูง และแผ่นสองโลหะ" data-zh="热动力型、高压型和双金属片型">Thermodynamic, High-Pressure & Bimetallic Strip Types</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(38)">
       <img src="steam_trap_images_hd/st_page_17.jpg" alt="Thermodynamic Steam Traps" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
 
 <div class="catalog-section" id="sec-st-vapor">
-  <div class="catalog-section-header"><div class="cat-number" style="color:#1565C0;">29</div><div class="cat-info"><h2>Vapor-Water Separation</h2><div class="cat-en">Efficient Steam-Water Separation Systems</div></div></div>
+  <div class="catalog-section-header"><div class="cat-number st-number">29</div><div class="cat-info"><h2 data-en="Vapor-Water Separation" data-th="การแยกไอน้ำ-น้ำ" data-zh="汽水分离">Vapor-Water Separation</h2><div class="cat-en" data-en="Efficient Steam-Water Separation Systems" data-th="ระบบแยกไอน้ำ-น้ำประสิทธิภาพสูง" data-zh="高效汽水分离系统">Efficient Steam-Water Separation Systems</div></div></div>
   <div class="cat-images">
     <div class="cat-img-wrap" onclick="openLightbox(39)">
       <img src="steam_trap_images_hd/st_page_18.jpg" alt="Vapor-Water Separation" loading="lazy">
-      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>View Full</button>
+      <button class="img-expand-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg><span data-en="View Full" data-th="ดูเต็ม" data-zh="查看">View Full</span></button>
     </div>
   </div>
 </div>
@@ -526,18 +536,18 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 <!-- ═══════════════════════════════════════════ -->
 
 <section class="contact" id="contact">
-  <h2>Get in Touch — 联系我们</h2>
-  <p>Ready to discuss your valve requirements? Contact our team for expert consultation.</p>
+  <h2 data-en="Get in Touch — 联系我们" data-th="ติดต่อเรา — 联系我们" data-zh="联系我们">Get in Touch — 联系我们</h2>
+  <p data-en="Ready to discuss your valve requirements? Contact our team for expert consultation." data-th="พร้อมที่จะหารือเกี่ยวกับความต้องการวาล์วของคุณ? ติดต่อทีมงานเราเพื่อรับคำปรึกษาจากผู้เชี่ยวชาญ" data-zh="准备讨论您的阀门需求？联系我们的团队获取专业咨询。">Ready to discuss your valve requirements? Contact our team for expert consultation.</p>
   <div class="contact-grid">
-    <div class="c-item"><h4>&#x1F3ED; Production HQ</h4><p>No.1020, Binhai 6th Road,<br>Longwan District, Wenzhou,<br>Zhejiang, China</p></div>
-    <div class="c-item"><h4>&#x1F4E7; Email</h4><p>penn@jetaivalve.com</p></div>
-    <div class="c-item"><h4>&#x1F4F1; WhatsApp</h4><p>+86 15227576999</p></div>
-    <div class="c-item"><h4>&#x1F4AC; WeChat</h4><p>+86 13127358377</p></div>
+    <div class="c-item"><h4 data-en="Production HQ" data-th="สำนักงานใหญ่ฝ่ายผลิต" data-zh="生产总部">Production HQ</h4><p>No.1020, Binhai 6th Road,<br>Longwan District, Wenzhou,<br>Zhejiang, China</p></div>
+    <div class="c-item"><h4 data-en="Email" data-th="อีเมล" data-zh="邮箱">Email</h4><p>penn@jetaivalve.com</p></div>
+    <div class="c-item"><h4>WhatsApp</h4><p>+86 15227576999</p></div>
+    <div class="c-item"><h4>WeChat</h4><p>+86 13127358377</p></div>
   </div>
 </section>
 
 <footer>
-  &copy; 2026 JITAI VALVE (SUZHOU) CO., LTD. — Professional Valve Manufacturer Since 1988. All rights reserved.
+  <span data-en="&copy; 2026 JITAI VALVE (SUZHOU) CO., LTD. — Professional Valve Manufacturer Since 1988. All rights reserved." data-th="&copy; 2026 JITAI VALVE (SUZHOU) CO., LTD. — ผู้ผลิตวาล์วมืออาชีพตั้งแต่ปี 1988 สงวนลิขสิทธิ์" data-zh="&copy; 2026 吉泰阀门（苏州）有限公司 — 始于1988年的专业阀门制造商。版权所有。">&copy; 2026 JITAI VALVE (SUZHOU) CO., LTD. — Professional Valve Manufacturer Since 1988. All rights reserved.</span>
 </footer>
 
 <!-- ═══════════════════════════════════════════ -->
@@ -553,7 +563,7 @@ footer{background:var(--darker);color:rgba(255,255,255,.25);text-align:center;pa
 </div>
 
 <script>
-// All catalog images in order (skip cover page_01, TOC page_02)
+// All catalog images in order
 const allImages = [
   {src:'catalog_images/page_03.jpg', title:'Company Profile'},
   {src:'catalog_images/page_04.jpg', title:'Group Structure'},
@@ -577,24 +587,23 @@ const allImages = [
   {src:'catalog_images/page_22.jpg', title:'API Valves'},
   {src:'catalog_images/page_23.jpg', title:'Threaded Valves'},
   {src:'catalog_images/page_24.jpg', title:'Forged Steel Valves'},
-  // Steam Trap Catalog (index 22-39)
   {src:'steam_trap_images_hd/st_page_01.jpg', title:'Steam Trap — Cover'},
-  {src:'steam_trap_images_hd/st_page_02.jpg', title:'Steam Trap — Company Profile & Contents'},
-  {src:'steam_trap_images_hd/st_page_03.jpg', title:'Steam Trap — Advanced Machining Equipment'},
-  {src:'steam_trap_images_hd/st_page_04.jpg', title:'Lever Float Type Steam Trap'},
-  {src:'steam_trap_images_hd/st_page_05.jpg', title:'Lever Float — Specs & Dimensions'},
-  {src:'steam_trap_images_hd/st_page_06.jpg', title:'Lever Single-seat Float Type'},
-  {src:'steam_trap_images_hd/st_page_07.jpg', title:'Single-seat — Specs & Displacement'},
-  {src:'steam_trap_images_hd/st_page_08.jpg', title:'Single-seat — Size & Weight'},
-  {src:'steam_trap_images_hd/st_page_09.jpg', title:'Lever Double-seat Float Ball'},
+  {src:'steam_trap_images_hd/st_page_02.jpg', title:'Steam Trap — Company Profile'},
+  {src:'steam_trap_images_hd/st_page_03.jpg', title:'Steam Trap — Equipment'},
+  {src:'steam_trap_images_hd/st_page_04.jpg', title:'Lever Float Type'},
+  {src:'steam_trap_images_hd/st_page_05.jpg', title:'Lever Float — Specs'},
+  {src:'steam_trap_images_hd/st_page_06.jpg', title:'Single-seat Float Type'},
+  {src:'steam_trap_images_hd/st_page_07.jpg', title:'Single-seat — Specs'},
+  {src:'steam_trap_images_hd/st_page_08.jpg', title:'Single-seat — Charts'},
+  {src:'steam_trap_images_hd/st_page_09.jpg', title:'Double-seat Float Ball'},
   {src:'steam_trap_images_hd/st_page_10.jpg', title:'Double-seat — Specs'},
-  {src:'steam_trap_images_hd/st_page_11.jpg', title:'Double-seat — Displacement Charts'},
-  {src:'steam_trap_images_hd/st_page_12.jpg', title:'Double-seat — High Displacement'},
-  {src:'steam_trap_images_hd/st_page_13.jpg', title:'Inverted Bucket Steam Trap'},
+  {src:'steam_trap_images_hd/st_page_11.jpg', title:'Double-seat — Charts'},
+  {src:'steam_trap_images_hd/st_page_12.jpg', title:'Double-seat — High Disp.'},
+  {src:'steam_trap_images_hd/st_page_13.jpg', title:'Inverted Bucket'},
   {src:'steam_trap_images_hd/st_page_14.jpg', title:'Inverted Bucket — Specs'},
-  {src:'steam_trap_images_hd/st_page_15.jpg', title:'Inverted Bucket — Displacement'},
-  {src:'steam_trap_images_hd/st_page_16.jpg', title:'Free Float Ball Type Steam Trap'},
-  {src:'steam_trap_images_hd/st_page_17.jpg', title:'Thermodynamic & HP Steam Traps'},
+  {src:'steam_trap_images_hd/st_page_15.jpg', title:'Inverted Bucket — Disp.'},
+  {src:'steam_trap_images_hd/st_page_16.jpg', title:'Free Float Ball'},
+  {src:'steam_trap_images_hd/st_page_17.jpg', title:'Thermodynamic Traps'},
   {src:'steam_trap_images_hd/st_page_18.jpg', title:'Vapor-Water Separation'},
 ];
 
@@ -630,12 +639,11 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') navLightbox(-1);
   if (e.key === 'ArrowRight') navLightbox(1);
 });
-// Click backdrop to close
 lb.addEventListener('click', e => {
   if (e.target === lb) closeLightbox();
 });
 
-// Smooth nav highlight
+// Nav highlight on scroll
 const navLinks = document.querySelectorAll('.nav-links a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -648,6 +656,28 @@ const observer = new IntersectionObserver(entries => {
   });
 }, {threshold: 0.3});
 document.querySelectorAll('[id]').forEach(el => observer.observe(el));
+
+// ═══════ LANGUAGE SWITCHER ═══════
+function setLang(lang) {
+  document.querySelectorAll('[data-'+lang+']').forEach(el => {
+    el.innerHTML = el.getAttribute('data-'+lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active',
+      (lang==='th' && b.textContent.trim()==='ไทย') ||
+      (lang==='en' && b.textContent.trim()==='EN') ||
+      (lang==='zh' && b.textContent.trim()==='中文')
+    );
+  });
+  try { localStorage.setItem('jitai-lang', lang); } catch(e) {}
+}
+// Restore saved language
+(function(){
+  try {
+    const saved = localStorage.getItem('jitai-lang');
+    if (saved && ['th','en','zh'].includes(saved)) setLang(saved);
+  } catch(e) {}
+})();
 </script>
 
 </body>

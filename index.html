@@ -7,91 +7,107 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap');
 :root{
-  --bg:#0a0a14;--bg2:#12122a;--bg3:#1a1a35;
-  --surface:rgba(255,255,255,.04);--surface2:rgba(255,255,255,.06);
-  --border:rgba(255,255,255,.06);--border-hover:rgba(255,255,255,.15);
+  --bg:#0a1628;--bg2:#0f1f3c;--bg3:#152a4a;
+  --surface:rgba(255,255,255,.04);--surface2:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--border-hover:rgba(255,255,255,.18);
   --text:#fff;--text2:rgba(255,255,255,.6);--text3:rgba(255,255,255,.35);
-  --gold:#F5A623;--gold-light:#FFEAA7;--gold-dark:#D4941F;
-  --accent:#6C63FF;--accent3:#4ECDC4;
+  --red:#D32F2F;--red-light:#EF5350;--red-dark:#B71C1C;
+  --navy:#1a2f4a;--navy-light:#243d5e;
+  --accent:#4ECDC4;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
-/* BG */
-.bg-grid{position:fixed;inset:0;z-index:0;opacity:.025;
-  background-image:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px);
-  background-size:60px 60px;}
-.bg-glow{position:fixed;z-index:0;border-radius:50%;filter:blur(140px);pointer-events:none;}
-.bg-glow-1{top:-200px;right:-100px;width:600px;height:600px;background:rgba(245,166,35,.06);}
-.bg-glow-2{bottom:-200px;left:-100px;width:500px;height:500px;background:rgba(108,99,255,.05);}
+/* ===== FLOATING INDUSTRIAL PRODUCTS BG ===== */
+.industrial-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.marquee-row{display:flex;position:absolute;width:max-content;gap:80px;opacity:.04;}
+.marquee-row svg{width:80px;height:80px;fill:rgba(255,255,255,.6);flex-shrink:0;}
+.marquee-row:nth-child(1){top:5%;animation:marqueeL 60s linear infinite;}
+.marquee-row:nth-child(2){top:25%;animation:marqueeR 75s linear infinite;}
+.marquee-row:nth-child(3){top:48%;animation:marqueeL 55s linear infinite;}
+.marquee-row:nth-child(4){top:70%;animation:marqueeR 65s linear infinite;}
+.marquee-row:nth-child(5){top:90%;animation:marqueeL 70s linear infinite;}
+@keyframes marqueeL{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@keyframes marqueeR{0%{transform:translateX(-50%);}100%{transform:translateX(0);}}
+@media(prefers-reduced-motion:reduce){.marquee-row{animation:none!important;}}
+
+/* BG Glows */
+.bg-glow{position:fixed;z-index:0;border-radius:50%;filter:blur(160px);pointer-events:none;}
+.bg-glow-1{top:-200px;right:-100px;width:600px;height:600px;background:rgba(211,47,47,.06);}
+.bg-glow-2{bottom:-200px;left:-100px;width:500px;height:500px;background:rgba(26,47,74,.3);}
 
 .container{max-width:1200px;margin:0 auto;padding:0 30px;position:relative;z-index:1;}
 
-/* Header */
-header{padding:25px 0;display:flex;align-items:center;justify-content:space-between;}
+/* ===== HEADER ===== */
+header{padding:22px 0;display:flex;align-items:center;justify-content:space-between;}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;}
-.logo-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;letter-spacing:1px;}
+.logo-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--red),var(--red-dark));display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;letter-spacing:1px;box-shadow:0 2px 12px rgba(211,47,47,.3);}
 .logo-text{font-size:17px;font-weight:700;letter-spacing:.3px;}
 .logo-text span{color:var(--text3);font-weight:400;font-size:12px;display:block;letter-spacing:0;margin-top:1px;}
-.header-right{display:flex;align-items:center;gap:12px;}
-.header-badge{background:var(--surface);border:1px solid var(--border);padding:6px 16px;border-radius:50px;font-size:11px;color:var(--text2);font-weight:500;}
+.header-right{display:flex;align-items:center;gap:10px;}
 
-/* Hero */
-.hero{padding:90px 0 60px;text-align:center;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);padding:8px 22px;border-radius:50px;font-size:12px;color:var(--gold);font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
-.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
+/* Language Toggle */
+.lang-toggle{display:flex;background:rgba(255,255,255,.06);border-radius:8px;padding:3px;gap:2px;border:1px solid var(--border);}
+.lang-btn{padding:6px 14px;border:none;border-radius:6px;background:transparent;color:var(--text3);font-size:11px;font-weight:600;cursor:pointer;transition:all .25s;font-family:inherit;letter-spacing:.3px;}
+.lang-btn:hover{color:var(--text2);background:rgba(255,255,255,.04);}
+.lang-btn.active{background:var(--red);color:#fff;box-shadow:0 2px 8px rgba(211,47,47,.35);}
+
+/* ===== HERO ===== */
+.hero{padding:80px 0 50px;text-align:center;position:relative;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(211,47,47,.08);border:1px solid rgba(211,47,47,.2);padding:8px 22px;border-radius:50px;font-size:12px;color:var(--red-light);font-weight:600;margin-bottom:28px;letter-spacing:.5px;}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 .hero h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:800;line-height:1.15;letter-spacing:-.5px;margin-bottom:22px;
-  background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.85) 40%,var(--gold) 100%);
+  background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.85) 50%,var(--red-light) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-desc{font-size:17px;color:var(--text2);max-width:580px;margin:0 auto 12px;line-height:1.75;font-weight:300;}
 .hero-sub{font-size:13px;color:var(--text3);max-width:480px;margin:0 auto;}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:14px 32px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .3s;box-shadow:0 4px 20px rgba(245,166,35,.25);}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(245,166,35,.35);}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;margin-top:32px;padding:14px 32px;background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:all .3s;box-shadow:0 4px 20px rgba(211,47,47,.3);}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(211,47,47,.45);}
 .hero-cta svg{width:18px;height:18px;}
 
-/* Curator */
-.curator{padding:56px 0;margin:20px 0 0;}
-.curator-inner{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:48px;display:flex;align-items:center;gap:48px;position:relative;overflow:hidden;}
-.curator-inner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(245,166,35,.08),transparent 70%);border-radius:50%;}
-.curator-avatar{flex-shrink:0;width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff;box-shadow:0 4px 30px rgba(245,166,35,.2);}
+/* ===== CURATOR ===== */
+.curator{padding:40px 0;margin:10px 0 0;}
+.curator-inner{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:44px;display:flex;align-items:center;gap:44px;position:relative;overflow:hidden;}
+.curator-inner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(211,47,47,.07),transparent 70%);border-radius:50%;}
+.curator-avatar{flex-shrink:0;width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--red),var(--red-dark));display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:800;color:#fff;box-shadow:0 4px 30px rgba(211,47,47,.25);}
 .curator-content{flex:1;}
 .curator-name{font-size:22px;font-weight:800;margin-bottom:4px;}
-.curator-name span{color:var(--gold);font-family:'Playfair Display',serif;}
+.curator-name em{color:var(--red-light);font-family:'Playfair Display',serif;font-style:normal;}
 .curator-role{font-size:12px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;font-weight:600;margin-bottom:14px;}
 .curator-bio{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:16px;}
-.curator-tagline{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;padding:10px 24px;border-radius:10px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.15);color:var(--gold);}
-.curator-tagline .th{font-weight:500;color:var(--gold-light);font-size:14px;}
+.curator-tagline{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:700;padding:10px 24px;border-radius:10px;background:rgba(211,47,47,.08);border:1px solid rgba(211,47,47,.18);color:var(--red-light);}
+.curator-tagline .th{font-weight:500;color:var(--red-light);font-size:14px;opacity:.8;}
 
-/* Stats */
-.stats{display:flex;justify-content:center;gap:48px;padding:40px 0;margin:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+/* ===== STATS ===== */
+.stats{display:flex;justify-content:center;gap:48px;padding:36px 0;margin:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .stat{text-align:center;}
-.stat .num{font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.stat .num{font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--red),var(--red-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .stat .lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:2px;margin-top:4px;}
 
-/* Section */
-.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-top:32px;}
+/* ===== SECTION HEAD ===== */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-top:28px;}
 .section-head h2{font-size:22px;font-weight:700;}
 .section-head .count{background:var(--surface);border:1px solid var(--border);padding:4px 14px;border-radius:50px;font-size:12px;color:var(--text3);}
 
-/* Brand Grid */
+/* ===== BRAND GRID ===== */
 .brands-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;margin-bottom:60px;}
 
 /* Brand Card */
 .brand-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .4s cubic-bezier(.4,0,.2,1);cursor:pointer;text-decoration:none;color:inherit;display:block;}
 .brand-card:hover{border-color:var(--border-hover);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);}
 .brand-card:hover .card-thumb img{transform:scale(1.05);}
-.brand-card:hover .card-arrow{background:var(--gold);color:#fff;border-color:var(--gold);}
+.brand-card:hover .card-arrow{background:var(--red);color:#fff;border-color:var(--red);}
 .card-thumb{height:200px;overflow:hidden;position:relative;}
 .card-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1);}
-.card-thumb-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,10,20,.8) 100%);}
+.card-thumb-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(10,22,40,.85) 100%);}
 .card-badge{position:absolute;top:15px;left:15px;display:flex;gap:6px;}
 .card-badge span{background:rgba(0,0,0,.5);backdrop-filter:blur(10px);padding:4px 12px;border-radius:6px;font-size:10px;font-weight:600;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.1);}
-.card-badge .live{background:rgba(78,205,196,.2);color:var(--accent3);border-color:rgba(78,205,196,.3);}
+.card-badge .live{background:rgba(78,205,196,.2);color:var(--accent);border-color:rgba(78,205,196,.3);}
 .card-body{padding:24px;}
 .card-brand-row{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
-.card-logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#D32F2F,#EF5350);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;letter-spacing:1px;flex-shrink:0;}
+.card-logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--red-light));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900;color:#fff;letter-spacing:1px;flex-shrink:0;}
 .card-brand-info h3{font-size:17px;font-weight:700;line-height:1.3;}
 .card-brand-info .since{font-size:11px;color:var(--text3);font-weight:500;}
 .card-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px;}
@@ -104,19 +120,19 @@ header{padding:25px 0;display:flex;align-items:center;justify-content:space-betw
 .card-arrow{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:16px;}
 
 /* Coming Soon */
-.brand-card.coming-soon{opacity:.35;pointer-events:none;}
+.brand-card.coming-soon{opacity:.3;pointer-events:none;}
 .brand-card.coming-soon .card-thumb{background:var(--bg2);display:flex;align-items:center;justify-content:center;}
 .brand-card.coming-soon .card-thumb .placeholder{font-size:48px;color:var(--text3);opacity:.3;}
 
-/* Footer */
+/* ===== FOOTER ===== */
 footer{text-align:center;padding:40px 0;border-top:1px solid var(--border);margin-top:40px;}
 footer p{font-size:12px;color:var(--text3);line-height:1.7;}
 footer .footer-links{display:flex;justify-content:center;gap:20px;margin-bottom:12px;}
 footer .footer-links a{font-size:12px;color:var(--text3);text-decoration:none;transition:color .3s;}
-footer .footer-links a:hover{color:var(--gold);}
+footer .footer-links a:hover{color:var(--red-light);}
 footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
   .hero h1{font-size:32px;}
   .hero-desc{font-size:15px;}
@@ -125,12 +141,112 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
   header{flex-direction:column;gap:15px;}
   .curator-inner{flex-direction:column;text-align:center;padding:32px 24px;}
   .curator-avatar{width:80px;height:80px;font-size:28px;}
+  .lang-toggle{order:-1;}
 }
 </style>
 </head>
 <body>
 
-<div class="bg-grid"></div>
+<!-- ===== FLOATING INDUSTRIAL PRODUCTS BACKGROUND ===== -->
+<div class="industrial-bg">
+  <!-- Row 1: Left scroll -->
+  <div class="marquee-row">
+    <!-- Gate Valve --><svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25zM35 45l-12 15h10zM65 45l12 15H67z"/></svg>
+    <!-- Ball Valve --><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/><rect x="46" y="26" width="8" height="14" rx="2"/></svg>
+    <!-- Pipe Fitting --><svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <!-- Pressure Gauge --><svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <!-- Butterfly Valve --><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/><rect x="46" y="15" width="8" height="14" rx="2"/></svg>
+    <!-- Actuator --><svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <!-- Flange --><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <!-- Check Valve --><svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <!-- Gate Valve 2 --><svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25zM35 45l-12 15h10zM65 45l12 15H67z"/></svg>
+    <!-- Ball Valve 2 --><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/><rect x="46" y="26" width="8" height="14" rx="2"/></svg>
+    <!-- Pipe Fitting 2 --><svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <!-- Pressure Gauge 2 --><svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <!-- Butterfly 2 --><svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/><rect x="46" y="15" width="8" height="14" rx="2"/></svg>
+    <!-- Actuator 2 --><svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <!-- Flange 2 --><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <!-- Check Valve 2 --><svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+  </div>
+  <!-- Row 2: Right scroll -->
+  <div class="marquee-row">
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+  </div>
+  <!-- Row 3 -->
+  <div class="marquee-row">
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+  </div>
+  <!-- Row 4 -->
+  <div class="marquee-row">
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+  </div>
+  <!-- Row 5 -->
+  <div class="marquee-row">
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+    <svg viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="30" ry="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><ellipse cx="50" cy="50" rx="8" ry="25" transform="rotate(30,50,50)"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="15" y="35" width="25" height="30" rx="3"/><rect x="60" y="35" width="25" height="30" rx="3"/><polygon points="50,30 65,50 50,70 35,50"/></svg>
+    <svg viewBox="0 0 100 100"><path d="M30 20h40v8H30zM45 28h10v44H45zM20 72h60v8H20zM25 60h50v12H25z"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="28" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="6"/><rect x="20" y="46" width="14" height="8" rx="2"/><rect x="66" y="46" width="14" height="8" rx="2"/><circle cx="50" cy="50" r="12"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="45" r="30" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="5"/><line x1="50" y1="45" x2="65" y2="32" stroke="rgba(255,255,255,.6)" stroke-width="3"/><rect x="44" y="72" width="12" height="14" rx="2"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="30" y="15" width="40" height="35" rx="5"/><rect x="42" y="50" width="16" height="20" rx="2"/><rect x="35" y="70" width="30" height="12" rx="3"/><circle cx="50" cy="32" r="8" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="3"/></svg>
+    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="32" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="50" r="18" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="4"/><circle cx="50" cy="22" r="4"/><circle cx="50" cy="78" r="4"/><circle cx="22" cy="50" r="4"/><circle cx="78" cy="50" r="4"/></svg>
+    <svg viewBox="0 0 100 100"><rect x="10" y="40" width="35" height="20" rx="3"/><rect x="55" y="25" width="20" height="50" rx="3"/><rect x="40" y="40" width="20" height="20" rx="3"/></svg>
+  </div>
+</div>
+
+<!-- BG Glows -->
 <div class="bg-glow bg-glow-1"></div>
 <div class="bg-glow bg-glow-2"></div>
 
@@ -140,22 +256,26 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
   <header>
     <a href="index.html" class="logo">
       <div class="logo-icon">KK</div>
-      <div class="logo-text">Khun Kirt Directory<span>Industrial Brand Catalog Portal</span></div>
+      <div class="logo-text" data-en="Khun Kirt Directory" data-th="คุณเกิร์ท ไดเรกทอรี" data-zh="Khun Kirt 目录"><span data-en="Industrial Brand Catalog Portal" data-th="พอร์ทัลแคตตาล็อกแบรนด์อุตสาหกรรม" data-zh="工业品牌目录门户">Industrial Brand Catalog Portal</span></div>
     </a>
     <div class="header-right">
-      <div class="header-badge">Curated with Trust</div>
+      <div class="lang-toggle" role="group" aria-label="Select language">
+        <button class="lang-btn" data-lang="th" onclick="setLang('th')">ไทย</button>
+        <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+      </div>
     </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-tag"><span class="dot"></span> Curated Industrial Brands</div>
-    <h1>Premium Brands,<br>Expertly Curated</h1>
-    <p class="hero-desc">Every supplier on this platform has been personally selected for quality, reliability, and partnership potential. Find brands you can trust, faster.</p>
-    <div class="hero-sub">Explore detailed product catalogs, certifications, and technical specifications from hand-picked manufacturers.</div>
+    <div class="hero-tag"><span class="dot"></span> <span data-en="Curated Industrial Brands" data-th="แบรนด์อุตสาหกรรมคัดสรร" data-zh="精选工业品牌">Curated Industrial Brands</span></div>
+    <h1 data-en="Premium Brands,&lt;br&gt;Expertly Curated" data-th="แบรนด์พรีเมียม&lt;br&gt;คัดสรรโดยผู้เชี่ยวชาญ" data-zh="优质品牌&lt;br&gt;专家精选">Premium Brands,<br>Expertly Curated</h1>
+    <p class="hero-desc" data-en="Every supplier on this platform has been personally selected for quality, reliability, and partnership potential. Find brands you can trust, faster." data-th="ซัพพลายเออร์ทุกรายบนแพลตฟอร์มนี้ได้รับการคัดเลือกเป็นการส่วนตัว ด้วยคุณภาพ ความน่าเชื่อถือ และศักยภาพในการเป็นพันธมิตร" data-zh="该平台上的每个供应商都经过精心挑选，具有优质品质、可靠性和合作潜力。更快地找到您可以信赖的品牌。">Every supplier on this platform has been personally selected for quality, reliability, and partnership potential. Find brands you can trust, faster.</p>
+    <div class="hero-sub" data-en="Explore detailed product catalogs, certifications, and technical specifications from hand-picked manufacturers." data-th="สำรวจแคตตาล็อกสินค้า ใบรับรอง และข้อมูลจำเพาะทางเทคนิคจากผู้ผลิตที่คัดสรรมาอย่างดี" data-zh="浏览精选制造商的详细产品目录、认证和技术规格。">Explore detailed product catalogs, certifications, and technical specifications from hand-picked manufacturers.</div>
     <a href="#brands" class="hero-cta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-      Explore Vetted Brands
+      <span data-en="Explore Vetted Brands" data-th="สำรวจแบรนด์ที่ผ่านการคัดสรร" data-zh="探索精选品牌">Explore Vetted Brands</span>
     </a>
   </section>
 
@@ -164,11 +284,11 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
     <div class="curator-inner">
       <div class="curator-avatar">K</div>
       <div class="curator-content">
-        <div class="curator-name">Meet <span>Khun Kirt</span></div>
-        <div class="curator-role">Founder &amp; Industrial Sourcing Expert</div>
-        <p class="curator-bio">I built this directory because finding reliable industrial suppliers shouldn't be this hard. Every brand you see here is hand-selected — not just vetted, but personally recommended by someone who understands your industry. When you find the right partners, everyone wins.</p>
+        <div class="curator-name" data-en="Meet &lt;em&gt;Khun Kirt&lt;/em&gt;" data-th="พบกับ &lt;em&gt;คุณเกิร์ท&lt;/em&gt;" data-zh="认识 &lt;em&gt;Khun Kirt&lt;/em&gt;">Meet <em>Khun Kirt</em></div>
+        <div class="curator-role" data-en="Founder &amp; Industrial Sourcing Expert" data-th="ผู้ก่อตั้ง &amp; ผู้เชี่ยวชาญจัดหาอุตสาหกรรม" data-zh="创始人 &amp; 工业采购专家">Founder &amp; Industrial Sourcing Expert</div>
+        <p class="curator-bio" data-en="I built this directory because finding reliable industrial suppliers shouldn't be this hard. Every brand you see here is hand-selected — not just vetted, but personally recommended by someone who understands your industry. When you find the right partners, everyone wins." data-th="ผมสร้างไดเรกทอรีนี้ขึ้นเพราะการหาซัพพลายเออร์อุตสาหกรรมที่เชื่อถือได้ไม่ควรยากขนาดนี้ ทุกแบรนด์ที่คุณเห็นที่นี่ได้รับการคัดสรรด้วยมือ — ไม่ใช่แค่ตรวจสอบ แต่แนะนำเป็นการส่วนตัวโดยคนที่เข้าใจอุตสาหกรรมของคุณ" data-zh="我建立这个目录是因为寻找可靠的工业供应商不应该如此困难。您在这里看到的每个品牌都是精心挑选的——不仅仅是经过审查，而是由了解您行业的人亲自推荐的。">I built this directory because finding reliable industrial suppliers shouldn't be this hard. Every brand you see here is hand-selected — not just vetted, but personally recommended by someone who understands your industry. When you find the right partners, everyone wins.</p>
         <div class="curator-tagline">
-          Let's Get Rich Together &nbsp;|&nbsp; <span class="th">มารวยด้วยกัน</span>
+          <span data-en="Let's Get Rich Together" data-th="มารวยด้วยกัน" data-zh="让我们一起致富">Let's Get Rich Together</span> &nbsp;|&nbsp; <span class="th">มารวยด้วยกัน</span>
         </div>
       </div>
     </div>
@@ -176,16 +296,16 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
 
   <!-- STATS -->
   <div class="stats">
-    <div class="stat"><div class="num">1</div><div class="lbl">Brands</div></div>
-    <div class="stat"><div class="num">40+</div><div class="lbl">Catalog Pages</div></div>
-    <div class="stat"><div class="num">12+</div><div class="lbl">Product Lines</div></div>
-    <div class="stat"><div class="num">100+</div><div class="lbl">Valve Models</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl" data-en="Brands" data-th="แบรนด์" data-zh="品牌">Brands</div></div>
+    <div class="stat"><div class="num">40+</div><div class="lbl" data-en="Catalog Pages" data-th="หน้าแคตตาล็อก" data-zh="目录页数">Catalog Pages</div></div>
+    <div class="stat"><div class="num">12+</div><div class="lbl" data-en="Product Lines" data-th="สายผลิตภัณฑ์" data-zh="产品线">Product Lines</div></div>
+    <div class="stat"><div class="num">100+</div><div class="lbl" data-en="Valve Models" data-th="รุ่นวาล์ว" data-zh="阀门型号">Valve Models</div></div>
   </div>
 
   <!-- BRANDS -->
   <div class="section-head" id="brands">
-    <h2>Our Curated Brands</h2>
-    <span class="count">1 Brand</span>
+    <h2 data-en="Our Curated Brands" data-th="แบรนด์ที่เราคัดสรร" data-zh="我们精选的品牌">Our Curated Brands</h2>
+    <span class="count" data-en="1 Brand" data-th="1 แบรนด์" data-zh="1 个品牌">1 Brand</span>
   </div>
 
   <div class="brands-grid">
@@ -196,20 +316,20 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
         <img src="brands/jitai/catalog_images/page_01.jpg" alt="JITAI Valve">
         <div class="card-thumb-overlay"></div>
         <div class="card-badge">
-          <span class="live">&#x2713; Active</span>
-          <span>Since 1988</span>
-          <span>40 Pages</span>
+          <span class="live" data-en="&#x2713; Active" data-th="&#x2713; ใช้งานอยู่" data-zh="&#x2713; 活跃">&#x2713; Active</span>
+          <span data-en="Since 1988" data-th="ตั้งแต่ 1988" data-zh="始于1988">Since 1988</span>
+          <span data-en="40 Pages" data-th="40 หน้า" data-zh="40页">40 Pages</span>
         </div>
       </div>
       <div class="card-body">
         <div class="card-brand-row">
           <div class="card-logo">JT</div>
           <div class="card-brand-info">
-            <h3>JITAI Valve (Suzhou) Co., Ltd.</h3>
+            <h3 data-en="JITAI Valve (Suzhou) Co., Ltd." data-th="บริษัท จี่ไท่ วาล์ว (ซูโจว) จำกัด" data-zh="吉泰阀门（苏州）有限公司">JITAI Valve (Suzhou) Co., Ltd.</h3>
             <div class="since">吉泰阀门（苏州）有限公司 &mdash; Est. 1988</div>
           </div>
         </div>
-        <div class="card-desc">National high-tech enterprise integrating product design, R&D, casting, forging, machining, and performance testing. Specialized in industrial control valves, steam traps, and special-purpose valves.</div>
+        <div class="card-desc" data-en="National high-tech enterprise integrating product design, R&amp;D, casting, forging, machining, and performance testing. Specialized in industrial control valves, steam traps, and special-purpose valves." data-th="วิสาหกิจเทคโนโลยีชั้นสูงระดับชาติที่รวมการออกแบบ วิจัยและพัฒนา หล่อ ตีขึ้นรูป กลึง และทดสอบสมรรถนะ เชี่ยวชาญวาล์วควบคุม กับดักไอน้ำ และวาล์วพิเศษ" data-zh="集产品设计、研发、铸造、锻造、机加工和性能测试于一体的国家高新技术企业。专注于工业控制阀、疏水阀和特种阀门。">National high-tech enterprise integrating product design, R&amp;D, casting, forging, machining, and performance testing. Specialized in industrial control valves, steam traps, and special-purpose valves.</div>
         <div class="card-tags">
           <span>Control Valves</span>
           <span>Ball Valves</span>
@@ -222,7 +342,7 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
         <div class="card-footer">
           <div class="card-stats">
             <div class="card-stat"><strong>200+</strong> CNC</div>
-            <div class="card-stat"><strong>10K+</strong> Tons/yr</div>
+            <div class="card-stat"><strong>10K+</strong> <span data-en="Tons/yr" data-th="ตัน/ปี" data-zh="吨/年">Tons/yr</span></div>
             <div class="card-stat"><strong>TS1A</strong> / CE / SIL3</div>
           </div>
           <div class="card-arrow">&rarr;</div>
@@ -235,12 +355,12 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
       <div class="card-thumb"><div class="placeholder">+</div></div>
       <div class="card-body">
         <div class="card-brand-row">
-          <div class="card-logo" style="background:linear-gradient(135deg,#333,#555);">?</div>
-          <div class="card-brand-info"><h3>Coming Soon</h3><div class="since">New brand to be added</div></div>
+          <div class="card-logo" style="background:linear-gradient(135deg,#1a2f4a,#243d5e);">?</div>
+          <div class="card-brand-info"><h3 data-en="Coming Soon" data-th="เร็วๆ นี้" data-zh="即将推出">Coming Soon</h3><div class="since" data-en="New brand to be added" data-th="แบรนด์ใหม่จะเพิ่มเร็วๆ นี้" data-zh="即将添加新品牌">New brand to be added</div></div>
         </div>
-        <div class="card-desc">A new industrial brand catalog will be available here soon. Stay tuned for more premium manufacturers.</div>
+        <div class="card-desc" data-en="A new industrial brand catalog will be available here soon. Stay tuned for more premium manufacturers." data-th="แคตตาล็อกแบรนด์อุตสาหกรรมใหม่จะพร้อมให้บริการเร็วๆ นี้" data-zh="新的工业品牌目录即将上线，敬请期待更多优质制造商。">A new industrial brand catalog will be available here soon. Stay tuned for more premium manufacturers.</div>
         <div class="card-footer">
-          <div class="card-stats"><div class="card-stat">Pending</div></div>
+          <div class="card-stats"><div class="card-stat" data-en="Pending" data-th="รอดำเนินการ" data-zh="待定">Pending</div></div>
           <div class="card-arrow">&rarr;</div>
         </div>
       </div>
@@ -251,12 +371,12 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
       <div class="card-thumb"><div class="placeholder">+</div></div>
       <div class="card-body">
         <div class="card-brand-row">
-          <div class="card-logo" style="background:linear-gradient(135deg,#333,#555);">?</div>
-          <div class="card-brand-info"><h3>Coming Soon</h3><div class="since">New brand to be added</div></div>
+          <div class="card-logo" style="background:linear-gradient(135deg,#1a2f4a,#243d5e);">?</div>
+          <div class="card-brand-info"><h3 data-en="Coming Soon" data-th="เร็วๆ นี้" data-zh="即将推出">Coming Soon</h3><div class="since" data-en="New brand to be added" data-th="แบรนด์ใหม่จะเพิ่มเร็วๆ นี้" data-zh="即将添加新品牌">New brand to be added</div></div>
         </div>
-        <div class="card-desc">Another curated brand slot. Contact Khun Kirt to feature your brand in our directory.</div>
+        <div class="card-desc" data-en="Another curated brand slot. Contact Khun Kirt to feature your brand in our directory." data-th="ช่องแบรนด์คัดสรรอีกช่อง ติดต่อคุณเกิร์ทเพื่อนำเสนอแบรนด์ของคุณในไดเรกทอรี" data-zh="另一个精选品牌位置。联系 Khun Kirt 将您的品牌加入我们的目录。">Another curated brand slot. Contact Khun Kirt to feature your brand in our directory.</div>
         <div class="card-footer">
-          <div class="card-stats"><div class="card-stat">Pending</div></div>
+          <div class="card-stats"><div class="card-stat" data-en="Pending" data-th="รอดำเนินการ" data-zh="待定">Pending</div></div>
           <div class="card-arrow">&rarr;</div>
         </div>
       </div>
@@ -268,13 +388,35 @@ footer .footer-brand{font-size:11px;color:rgba(255,255,255,.2);margin-top:8px;}
   <footer>
     <div class="footer-links">
       <a href="brands/jitai/index.html">JITAI Valve</a>
-      <a href="#brands">All Brands</a>
+      <a href="#brands" data-en="All Brands" data-th="แบรนด์ทั้งหมด" data-zh="所有品牌">All Brands</a>
     </div>
-    <p>&copy; 2026 Khun Kirt Directory. All product information and images belong to their respective manufacturers.</p>
-    <div class="footer-brand">Curated with care by Khun Kirt &mdash; Let's Get Rich Together | มารวยด้วยกัน</div>
+    <p data-en="&copy; 2026 Khun Kirt Directory. All product information and images belong to their respective manufacturers." data-th="&copy; 2026 Khun Kirt Directory สงวนลิขสิทธิ์ ข้อมูลผลิตภัณฑ์และรูปภาพเป็นของผู้ผลิตแต่ละราย" data-zh="&copy; 2026 Khun Kirt Directory。所有产品信息和图片均属于各自制造商。">&copy; 2026 Khun Kirt Directory. All product information and images belong to their respective manufacturers.</p>
+    <div class="footer-brand">Curated with care by Khun Kirt &mdash; Let's Get Rich Together | มารวยด้วยกัน | 让我们一起致富</div>
   </footer>
 
 </div>
+
+<!-- ===== LANGUAGE SWITCHER SCRIPT ===== -->
+<script>
+function setLang(lang){
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.lang===lang);
+  });
+  document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+    const v=el.getAttribute('data-'+lang);
+    if(v){
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA') el.value=v;
+      else el.innerHTML=v;
+    }
+  });
+  try{localStorage.setItem('kk-lang',lang);}catch(e){}
+  document.documentElement.lang=lang==='zh'?'zh-CN':lang;
+}
+(function(){
+  const saved=localStorage.getItem('kk-lang');
+  if(saved&&['en','th','zh'].includes(saved)) setLang(saved);
+})();
+</script>
 
 </body>
 </html>
